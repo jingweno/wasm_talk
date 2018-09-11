@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Go Get Nuts Wasm</title>
+
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Geo);
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .hiddenText {
+        font-family: Geo;
+        visibility: hidden;
+      }
+    </style>
+
+    <meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="true" />
+
+  </head>
+
+  <body>
+    <a href="https://github.com/jingweno/wasm_talk/tree/master/go-get-nuts"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <div id="gameDiv"> </div>
+    <p class="hiddenText"> . </p>
+
+    <script type="text/javascript" src="phaser.min.js"></script>
+    <script type="text/javascript" src="js/wasm_exec.js"></script>
+    <script>
+      const go = new Go();
+      WebAssembly.instantiateStreaming(fetch('main.wasm'),go.importObject).then(res=> {
+        go.run(res.instance)
+      })
+    </script>
+  </body>
+</html>
