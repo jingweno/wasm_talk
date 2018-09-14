@@ -8,6 +8,7 @@ var Phaser = js.Global().Get("Phaser")
 
 // FIXME: `js.Callback` doesn't properly bind to "this".
 // Hack to use `eval` and `Function` to evaluate code.
+// See https://github.com/golang/go/issues/27441
 func main() {
 	game := Phaser.Get("Game").New(500, 340, Phaser.Get("AUTO"), "gameDiv")
 	js.Global().Set("game", game)
