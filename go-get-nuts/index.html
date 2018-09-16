@@ -36,8 +36,8 @@
     <script type="text/javascript" src="js/wasm_exec.js"></script>
     <script>
       const go = new Go();
-      WebAssembly.instantiateStreaming(fetch('main.wasm'),go.importObject).then(res=> {
-        go.run(res.instance)
+      WebAssembly.instantiateStreaming(fetch('main.wasm'), go.importObject).then(obj => {
+        go.run(obj.instance)
       })
     </script>
   </body>

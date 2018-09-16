@@ -55,20 +55,20 @@ func main() {
 	}
 	client := web.NewBackendClient(cc)
 
-	info("getting a non-existent user")
 	resp, err := client.GetUser(context.Background(), &web.GetUserRequest{
-		UserId: "1234",
+		UserId: "123",
 	})
 	if err != nil {
 		st := status.Convert(err)
-		grpclog.Println(st.Code(), st.Message(), st.Details())
+		info("getting a non-existent user")
+		grpclog.Printf("code=%s message=%s details=%s\n", st.Code(), st.Message(), st.Details())
 	} else {
 		grpclog.Println(resp)
 	}
 
 	info("getting an existing user")
 	resp, err = client.GetUser(context.Background(), &web.GetUserRequest{
-		UserId: "123",
+		UserId: "1234",
 	})
 	if err != nil {
 		st := status.Convert(err)

@@ -1,6 +1,8 @@
-.PHONY: build run
+.PHONY: default build exec server
 
 VERBOSE=1
+
+default: server
 
 build:
 	GOARCH=wasm GOOS=js go build -o test.wasm
